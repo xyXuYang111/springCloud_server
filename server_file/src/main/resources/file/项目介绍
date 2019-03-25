@@ -1,0 +1,4 @@
+1，这个是文件服务项目，里面集成了redis，mysql，mybatis，熔断，fegihn等相关配置
+       1，mysql，mybatis，redis，ribbon，feign，Hystrix
+       2，此服务需要实现效果是：看到我所有的的文件，对我所有文件进行统一管理
+           需要集成一个别人已经写好的项目做简单的会用

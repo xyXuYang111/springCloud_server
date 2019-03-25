@@ -1,0 +1,6 @@
+1，本服务是路由规则和访问路径监听的整体集成
+      也就是zuul和zipkin客户端的集成
+
+2,启动zipKin服务端
+      1，自己开发一个
+      2，启动一个：java -jar zipkin-server-2.10.1-exec.jar
