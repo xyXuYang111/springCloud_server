@@ -3,6 +3,7 @@
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/registry" />
+    <file type="web" url="file://$PROJECT_DIR$/server_email" />
     <file type="web" url="file://$PROJECT_DIR$/server_file" />
     <file type="web" url="file://$PROJECT_DIR$/zipkin_server" />
     <file type="web" url="file://$PROJECT_DIR$/zuul" />
@@ -14,6 +15,7 @@
         <option value="$PROJECT_DIR$/registry/pom.xml" />
         <option value="$PROJECT_DIR$/zuul/pom.xml" />
         <option value="$PROJECT_DIR$/server_file/pom.xml" />
+        <option value="$PROJECT_DIR$/server_email/pom.xml" />
       </list>
     </option>
   </component>

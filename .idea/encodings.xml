@@ -2,11 +2,10 @@
 <project version="4">
   <component name="Encoding" addBOMForNewFiles="with NO BOM">
     <file url="file://$PROJECT_DIR$/registry" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/registry" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/server_email" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/server_file" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/server_file/src/main/resources/mybatis/mybatis-config.xml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/server_file/src/main/resources/mybatis/user/userMapper.xml" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/zipkin_server" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/zuul" charset="UTF-8" />
   </component>
 </project>

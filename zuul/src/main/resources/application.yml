@@ -20,3 +20,6 @@ zuul:
     file:
       path: /file/*
       serviceId : file
+    email:
+      path: /email/*
+      serviceId : email
