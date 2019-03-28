@@ -15,24 +15,20 @@ import java.io.Serializable;
  */
 @Slf4j
 @ToString
-@Data
-@XmlRootElement(name = "xml")
+@XmlRootElement(name = "xml1")
 public class XmlModel implements Serializable {
 
     private static final long serialVersionUID = 6933129608009206001L;
 
-    @XmlAttribute(name = "userName")
     private String userName;
 
-    @XmlAttribute(name = "password")
     private String password;
 
-    @XmlAttribute(name = "terrace")
     private String terrace;
 
-    @XmlAttribute(name = "createTime")
     private String createTime;
 
+    @XmlAttribute(name = "userName")
     public String getUserName() {
         return userName;
     }
@@ -41,6 +37,7 @@ public class XmlModel implements Serializable {
         this.userName = userName;
     }
 
+    @XmlAttribute(name = "password")
     public String getPassword() {
         return password;
     }
@@ -49,6 +46,7 @@ public class XmlModel implements Serializable {
         this.password = password;
     }
 
+    @XmlAttribute(name = "terrace")
     public String getTerrace() {
         return terrace;
     }
@@ -57,6 +55,7 @@ public class XmlModel implements Serializable {
         this.terrace = terrace;
     }
 
+    @XmlAttribute(name = "createTime")
     public String getCreateTime() {
         return createTime;
     }

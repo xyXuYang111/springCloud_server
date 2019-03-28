@@ -7,6 +7,7 @@ import com.xuyang.springcloud.server_file.util.FileUtil;
 import com.xuyang.springcloud.server_file.util.JsonChangeXml;
 import com.xuyang.springcloud.server_file.util.ResultUtil;
 import com.xuyang.springcloud.server_file.util.XmlUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,6 +21,7 @@ import java.util.List;
  * @Date: 2019/3/28 01:01
  * @Description:
  */
+@Slf4j
 @RestController
 public class FileController {
 
@@ -36,6 +38,7 @@ public class FileController {
             XmlModel xmlModel = JsonChangeXml.jsonChangeXmlModel(xmlJson);
             //将xml转换成字符串
             String xml = XmlUtil.convertObjectToXmlStr(xmlModel);
+            log.info("报文结构:"+xml);
             //xml字符串写到文档中
             FileUtil.valueWriteInFile(xml, filePath);
             //调用相关方法，返回结果集

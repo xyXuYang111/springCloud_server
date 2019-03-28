@@ -19,4 +19,4 @@ zuul:
   routes:
     file:
       path: /file/*
-      serviceId : server-file
+      serviceId : file

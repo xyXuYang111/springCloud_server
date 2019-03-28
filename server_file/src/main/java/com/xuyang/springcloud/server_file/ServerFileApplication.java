@@ -12,9 +12,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
 @EnableEurekaClient
-@EnableFeignClients
-@EnableHystrix
-@EnableDiscoveryClient
 @SpringBootApplication
 public class ServerFileApplication {
 

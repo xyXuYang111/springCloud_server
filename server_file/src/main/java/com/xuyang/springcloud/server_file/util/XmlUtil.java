@@ -26,24 +26,18 @@ public class XmlUtil {
      * @throws Exception
      */
     public static String convertObjectToXmlStr(Object object) throws Exception {
-        try {
 
-            StringWriter writer = new StringWriter();
-            JAXBContext context = JAXBContext.newInstance(object.getClass());
-            Marshaller marshal = context.createMarshaller();
+        StringWriter writer = new StringWriter();
+        JAXBContext context = JAXBContext.newInstance(object.getClass());
+        Marshaller marshal = context.createMarshaller();
 
-            marshal.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true); // 格式化输出
-            marshal.setProperty(Marshaller.JAXB_ENCODING, "UTF-8");// 编码格式,默认为utf-8
-            marshal.setProperty(Marshaller.JAXB_FRAGMENT, false);// 是否省略xml头信息
-            marshal.setProperty("jaxb.encoding", "utf-8");
-            marshal.marshal(object, writer);
+        marshal.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true); // 格式化输出
+        marshal.setProperty(Marshaller.JAXB_ENCODING, "UTF-8");// 编码格式,默认为utf-8
+        marshal.setProperty(Marshaller.JAXB_FRAGMENT, false);// 是否省略xml头信息
+        marshal.setProperty("jaxb.encoding", "utf-8");
+        marshal.marshal(object, writer);
 
-            return new String(writer.getBuffer());
-        }catch (Exception e){
-            log.error(e.getMessage());
-        }
-
-        return "";
+        return new String(writer.getBuffer());
     }
 
     /**

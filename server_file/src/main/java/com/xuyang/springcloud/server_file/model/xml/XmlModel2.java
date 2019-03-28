@@ -18,7 +18,7 @@ import java.util.List;
 @Slf4j
 @Data
 @ToString
-@XmlRootElement(name = "xml")
+@XmlRootElement(name = "xml2")
 public class XmlModel2 implements Serializable {
 
     private static final long serialVersionUID = 2065353650411546163L;
