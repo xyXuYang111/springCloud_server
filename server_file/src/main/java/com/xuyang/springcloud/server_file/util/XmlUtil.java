@@ -1,50 +1,88 @@
 package com.xuyang.springcloud.server_file.util;
 
+import com.github.pagehelper.util.StringUtil;
+import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
+
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
-import java.io.File;
-import java.io.IOException;
-import java.io.StringWriter;
+import java.io.*;
 
 /**
  * @Auther: xuy
  * @Date: 2019/3/28 00:30
  * @Description:
  */
+@Data
+@Slf4j
 public class XmlUtil {
 
     /**
-     * java对象转换为xml文件
-     * @param load    java对象.Class
-     * @return    xml文件的String
-     * @throws JAXBException
-     * 23
+     * 对象转换成xml
+     * @param object
+     * @return
+     * @throws Exception
      */
-    public static String beanToXml(Object obj, Class<?> load) throws JAXBException {
-        JAXBContext context = JAXBContext.newInstance(load);
-        Marshaller marshaller = context.createMarshaller();
-        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-        marshaller.setProperty(Marshaller.JAXB_ENCODING, "GBK");
-        StringWriter writer = new StringWriter();
-        marshaller.marshal(obj, writer);
-        return writer.toString();
+    public static String convertObjectToXmlStr(Object object) throws Exception {
+        try {
+
+            StringWriter writer = new StringWriter();
+            JAXBContext context = JAXBContext.newInstance(object.getClass());
+            Marshaller marshal = context.createMarshaller();
+
+            marshal.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true); // 格式化输出
+            marshal.setProperty(Marshaller.JAXB_ENCODING, "UTF-8");// 编码格式,默认为utf-8
+            marshal.setProperty(Marshaller.JAXB_FRAGMENT, false);// 是否省略xml头信息
+            marshal.setProperty("jaxb.encoding", "utf-8");
+            marshal.marshal(object, writer);
+
+            return new String(writer.getBuffer());
+        }catch (Exception e){
+            log.error(e.getMessage());
+        }
+
+        return "";
     }
 
     /**
-     * xml文件配置转换为对象
-     *
-     * @param xmlPath xml文件路径
-     * @param load    java对象.Class
-     * @return java对象
-     * @throws JAXBException
-     * @throws IOException
+     * 将String类型的xml转换成对象
      */
-    public static Object xmlToBean(String xmlPath, Class<?> load) throws JAXBException, IOException {
-        JAXBContext context = JAXBContext.newInstance(load);
-        Unmarshaller unmarshaller = context.createUnmarshaller();
-        Object object = unmarshaller.unmarshal(new File(xmlPath));
-        return object;
+    public static Object convertXmlStrToObject(Class clazz, String xmlStr) {
+        Object xmlObject = null;
+        try {
+            JAXBContext context = JAXBContext.newInstance(clazz);
+            // 进行将Xml转成对象的核心接口
+            Unmarshaller unmarshaller = context.createUnmarshaller();
+            StringReader sr = new StringReader(xmlStr);
+            xmlObject = unmarshaller.unmarshal(sr);
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
+        return xmlObject;
     }
+
+    /**
+     * 将file文件的xml转换成对象
+     */
+    public static Object convertXmlFileToObject(Class clazz, String xmlPath) {
+        Object xmlObject = null;
+        try {
+            JAXBContext context = JAXBContext.newInstance(clazz);
+            Unmarshaller unmarshaller = context.createUnmarshaller();
+            FileReader fr = null;
+            try {
+                fr = new FileReader(xmlPath);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            xmlObject = unmarshaller.unmarshal(fr);
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
+        return xmlObject;
+    }
+
+
 }

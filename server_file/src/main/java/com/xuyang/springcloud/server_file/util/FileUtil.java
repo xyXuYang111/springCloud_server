@@ -6,6 +6,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * @Auther: xuy
@@ -29,7 +30,7 @@ public class FileUtil {
                 file.createNewFile();
             }
             fw = new FileWriter(file);
-            fw.write(xml);//向文件中写内容
+            fw.write(xml);
             fw.flush();
             log.info("内容写成功。");
         } catch (IOException e) {
@@ -75,19 +76,20 @@ public class FileUtil {
     public static void sequenceDemo(String resultFileName, String fileFindName)throws IOException {
         FileInputStream fis = null;
         FileOutputStream fos = new FileOutputStream(resultFileName);
-        ArrayList<FileInputStream> al = new ArrayList<FileInputStream>();//Vector效率低
+        ArrayList<FileInputStream> al = new ArrayList<>();
         int count = 0;
-        File dir = new File(fileFindName);//利用File遍历文件夹下的文件
+        File dir = new File(fileFindName);
         File[] files = dir.listFiles();
         for(int x=0;x<files.length;x++) {
             al.add(new FileInputStream(files[x]));
         }
-        final Iterator<FileInputStream> it = al.iterator();//ArrayList本身没有枚举方法，通过迭代器来实现
-        Enumeration<FileInputStream> en= new Enumeration<FileInputStream>()//匿名内部类，复写枚举接口下的两个方法
-        {
+        final Iterator<FileInputStream> it = al.iterator();
+        Enumeration<FileInputStream> en= new Enumeration<FileInputStream>() {
+            @Override
             public boolean hasMoreElements(){
                 return it.hasNext();
             }
+            @Override
             public FileInputStream nextElement()
             {
                 return it.next();
@@ -109,19 +111,23 @@ public class FileUtil {
      * @param filePath
      * @throws IOException
      */
-    public static void splitDemo(String filePath, String outFileName)throws IOException {
+    public static List<String> splitDemo(String filePath, String outFileName)throws IOException {
         FileInputStream fis = new FileInputStream(filePath);
-        FileOutputStream fos = null;//要在循环内部创建FileOutputStream对象
-        byte[] buf = new byte[1024*1024*10];//将文件分割成1M大小的碎片
+        FileOutputStream fos = null;
+        byte[] buf = new byte[1024*1024*10];
         int len,count = 0;
 
+        List<String> fileNameList = new ArrayList<>();
         while((len=fis.read(buf))!=-1) {
-            fos = new FileOutputStream("D:\\file\\"+outFileName+"\\"+(count++)+".part");
+            String fileName = "D:\\file\\"+outFileName+"\\"+(count++)+".part";
+            fos = new FileOutputStream(fileName);
             fos.write(buf,0,len);
             fos.flush();
             fos.close();
+            fileNameList.add(fileName);
         }
         fis.close();
+        return fileNameList;
     }
 
 }

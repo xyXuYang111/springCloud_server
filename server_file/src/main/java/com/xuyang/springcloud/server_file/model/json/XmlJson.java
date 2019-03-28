@@ -41,6 +41,9 @@ public class XmlJson implements Serializable {
     @JsonProperty(value = "fileName")
     private String fileName;
 
+    @JsonProperty(value = "filePath")
+    private String filePath;
+
     public String getSix() {
         return six;
     }
@@ -95,5 +98,13 @@ public class XmlJson implements Serializable {
 
     public void setFileName(String fileName) {
         this.fileName = fileName;
+    }
+
+    public String getFilePath() {
+        return filePath;
+    }
+
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
     }
 }
