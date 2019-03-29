@@ -9,11 +9,8 @@ public class FileStreamUtilTest {
     public void markFileToString() throws Exception {
 
         String fileName = "G:\\file\\test.doc";
-        String outFile = "G:\\file\\text1111.doc";
+        String outFile = "G:\\file\\text.doc";
 
-        String str = FileStreamUtil.markFileToString(fileName, 2000, outFile);
-        //还存在问题：他的前面内容将是空的
-        byte[] bytes = str.getBytes();
-        FileUtil.fileOutputStreamInFile(bytes, outFile);
+        FileStreamUtil.markFileToString(fileName, 2000, outFile);
     }
 }

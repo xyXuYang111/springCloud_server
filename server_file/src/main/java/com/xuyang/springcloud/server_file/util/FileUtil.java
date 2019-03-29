@@ -50,27 +50,6 @@ public class FileUtil {
     }
 
     /**
-     * 读取文件中的信息
-     * @param filePath
-     * @return
-     */
-    public static String txt2String(String filePath){
-        StringBuilder result = new StringBuilder();
-        try{
-            File file = new File(filePath);
-            BufferedReader br = new BufferedReader(new FileReader(file));//构造一个BufferedReader类来读取文件
-            String s = null;
-            while((s = br.readLine())!=null){//使用readLine方法，一次读一行
-                result.append(System.lineSeparator()+s);
-            }
-            br.close();
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-        return result.toString();
-    }
-
-    /**
      * 文件合并
      * @throws IOException
      */
@@ -115,12 +94,12 @@ public class FileUtil {
     public static List<String> splitDemo(String filePath, String outFileName)throws IOException {
         FileInputStream fis = new FileInputStream(filePath);
         FileOutputStream fos = null;
-        byte[] buf = new byte[1024*1024*10];
+        byte[] buf = new byte[1024*2];
         int len,count = 0;
 
         List<String> fileNameList = new ArrayList<>();
         while((len=fis.read(buf))!=-1) {
-            String fileName = "D:\\file\\"+outFileName+"\\"+(count++)+".part";
+            String fileName = "D:\\file\\"+outFileName+"\\"+(count++)+".doc";
             fos = new FileOutputStream(fileName);
             fos.write(buf,0,len);
             fos.flush();
@@ -131,12 +110,32 @@ public class FileUtil {
         return fileNameList;
     }
 
-    public static void byteInFile(byte[] bytes, String fileName) throws Exception{
-        FileOutputStream fos = new FileOutputStream(fileName);
+    /**
+     * 文件字节流的写入
+     * @param filePath
+     * @param outFilePath
+     * @throws Exception
+     */
+    public static void fileToByte(String filePath, String outFilePath, int byteSize) throws Exception{
+        FileInputStream fis = new FileInputStream(filePath);
+        FileOutputStream fos = null;
+        byte[] bytes = new byte[byteSize];
+        int len,count = 0;
 
-        fos.write(bytes,0,bytes.length);
-        fos.flush();
-        fos.close();
+        //下面这个是关键：文件的字节流的写入
+        List<String> fileNameList = new ArrayList<>();
+        while((len=fis.read(bytes))!=-1) {
+            String fileName = "F:\\text\\"+(count++)+".doc";
+            File file = new File(fileName);
+            file.createNewFile();
+            fos = new FileOutputStream(fileName);
+            fos.write(bytes,0,len);
+            fos.flush();
+            fos.close();
+            String str = new String(bytes);
+            fileNameList.add(str);
+            file.delete();
+        }
+        fis.close();
     }
-
 }
