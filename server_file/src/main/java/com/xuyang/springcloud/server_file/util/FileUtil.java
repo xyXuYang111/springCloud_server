@@ -3,10 +3,7 @@ package com.xuyang.springcloud.server_file.util;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 /**
  * @Auther: xuy
@@ -21,31 +18,35 @@ public class FileUtil {
      *
      * @param xml
      */
-    public static void valueWriteInFile(String xml, String filePath) {
+    public static void valueWriteInFile(String xml, String filePath) throws Exception {
         File file = null;
         FileWriter fw = null;
         file = new File(filePath);
-        try {
-            if (!file.exists()) {
-                file.createNewFile();
-            }
-            fw = new FileWriter(file);
-            fw.write(xml);
-            fw.flush();
-            log.info("内容写成功。");
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } finally {
-            if (fw != null) {
-                try {
-                    fw.close();
-                } catch (IOException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-            }
+        if (!file.exists()) {
+            file.createNewFile();
         }
+        fw = new FileWriter(file);
+        fw.write(xml);
+        fw.flush();
+        log.info("内容写成功。");
+    }
+
+
+    /**
+     * 将字节流写到文本中
+     *
+     * @param bytes
+     */
+    public static void fileOutputStreamInFile(byte[] bytes, String filePath) throws Exception {
+        File file = null;
+        file = new File(filePath);
+        if (!file.exists()) {
+            file.createNewFile();
+        }
+        FileOutputStream fos = new FileOutputStream(file);
+        fos.write(bytes);
+        fos.flush();
+        log.info("内容写成功。");
     }
 
     /**
@@ -128,6 +129,14 @@ public class FileUtil {
         }
         fis.close();
         return fileNameList;
+    }
+
+    public static void byteInFile(byte[] bytes, String fileName) throws Exception{
+        FileOutputStream fos = new FileOutputStream(fileName);
+
+        fos.write(bytes,0,bytes.length);
+        fos.flush();
+        fos.close();
     }
 
 }

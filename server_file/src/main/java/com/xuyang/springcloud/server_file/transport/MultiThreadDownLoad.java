@@ -26,7 +26,7 @@ import java.util.concurrent.Executors;
  *
  * 每个线程支负责某一小段的数据下载；再通过RandomAccessFile完成数据的整合。
  */
-public class MultiTheradDownLoad {
+public class MultiThreadDownLoad {
 
     private String filepath = null;
     private String filename = null;
@@ -46,7 +46,7 @@ public class MultiTheradDownLoad {
     private URL url = null;
 
     //有参构造函数，先构造需要的数据
-    public MultiTheradDownLoad(String filepath, int threadNum) {
+    public MultiThreadDownLoad(String filepath, int threadNum) {
         this.filepath = filepath;
         this.threadNum = threadNum;
         startPos = new long[this.threadNum];
@@ -182,7 +182,7 @@ public class MultiTheradDownLoad {
 
         private long startPos;
         private long endPos;
-        private MultiTheradDownLoad task = null;
+        private MultiThreadDownLoad task = null;
         private RandomAccessFile downloadfile = null;
         private int id;
         private File tmpfile = null;
@@ -190,7 +190,7 @@ public class MultiTheradDownLoad {
         private CountDownLatch latch = null;
 
         public DownLoadThread(long startPos, long endPos,
-                              MultiTheradDownLoad task, int id, File tmpfile,
+                              MultiThreadDownLoad task, int id, File tmpfile,
                               CountDownLatch latch) {
             this.startPos = startPos;
             this.endPos = endPos;
