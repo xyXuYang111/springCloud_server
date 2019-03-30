@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="registry" />
+        <module name="server_api" />
         <module name="server_email" />
         <module name="server_file" />
         <module name="server_user" />
@@ -15,16 +16,14 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="registry" target="1.8" />
+      <module name="server_api" target="1.8" />
+      <module name="server_email" target="1.8" />
+      <module name="server_file" target="1.8" />
+      <module name="server_user" target="1.8" />
+      <module name="web03" target="1.5" />
       <module name="zipkin_server" target="1.8" />
+      <module name="zuul" target="1.8" />
     </bytecodeTargetLevel>
-  </component>
-  <component name="JavacSettings">
-    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="registry" options="-parameters" />
-      <module name="server_email" options="-parameters" />
-      <module name="server_file" options="-parameters" />
-      <module name="server_user" options="-parameters" />
-      <module name="zuul" options="-parameters" />
-    </option>
   </component>
 </project>
