@@ -27,11 +27,12 @@ public class FileController {
 
     /**
      * 将报文转换成xml，写到文本中
+     * 将用户信息通过报文写到文本中
      * @param xmlJson
      * @return
      */
-    @RequestMapping(value = "writeInFile.do", method = RequestMethod.GET)
-    public ResultJson writeInFile(@RequestBody XmlJson xmlJson){
+    @RequestMapping(value = "writeUserInfoInFile.do", method = RequestMethod.GET)
+    public ResultJson writeUserInfoInFile(@RequestBody XmlJson xmlJson){
         try {
             String filePath = xmlJson.getFilePath();
             //xmlJson转换成xmlModel
@@ -41,6 +42,7 @@ public class FileController {
             log.info("报文结构:"+xml);
             //xml字符串写到文档中
             FileUtil.valueWriteInFile(xml, filePath);
+
             //调用相关方法，返回结果集
             return ResultUtil.successResult(filePath);
         } catch (Exception e) {
@@ -48,45 +50,5 @@ public class FileController {
             return ResultUtil.errorResult(e.getMessage());
         }
     }
-
-    /**
-     * 切割文件：返回相关文件名
-     * @param xmlJson
-     * @return
-     */
-    @RequestMapping(value = "cutFile.do", method = RequestMethod.GET)
-    public ResultJson cutFile(@RequestBody XmlJson xmlJson){
-        try {
-            String fileName = xmlJson.getFileName();
-            String filePath = xmlJson.getFilePath();
-            //切割
-            List<String> fileNameList = FileUtil.splitDemo(filePath, fileName);
-            //调用相关方法，返回结果集
-            return ResultUtil.successResult(fileNameList);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return ResultUtil.errorResult(e.getMessage());
-        }
-    }
-
-    /**
-     * 合并文件，返回文件名称
-     * @param xmlJson
-     * @return
-     */
-    @RequestMapping(value = "mergeFile.do", method = RequestMethod.GET)
-    public ResultJson mergeFile(@RequestBody XmlJson xmlJson){
-        try {
-            String fileName = xmlJson.getFileName();
-            String filePath = xmlJson.getFilePath();
-            FileUtil.sequenceDemo(fileName, filePath);
-            //调用相关方法，返回结果集
-            return ResultUtil.successResult(fileName);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return ResultUtil.errorResult(e.getMessage());
-        }
-    }
-
 
 }
