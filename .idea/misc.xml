@@ -6,6 +6,7 @@
     <file type="web" url="file://$PROJECT_DIR$/server_api" />
     <file type="web" url="file://$PROJECT_DIR$/server_email" />
     <file type="web" url="file://$PROJECT_DIR$/server_file" />
+    <file type="web" url="file://$PROJECT_DIR$/server_redis" />
     <file type="web" url="file://$PROJECT_DIR$/server_user" />
     <file type="web" url="file://$PROJECT_DIR$/zipkin_server" />
     <file type="web" url="file://$PROJECT_DIR$/zuul" />
@@ -20,6 +21,7 @@
         <option value="$PROJECT_DIR$/server_email/pom.xml" />
         <option value="$PROJECT_DIR$/server_user/pom.xml" />
         <option value="$PROJECT_DIR$/server_api/pom.xml" />
+        <option value="$PROJECT_DIR$/redis/pom.xml" />
       </list>
     </option>
   </component>
