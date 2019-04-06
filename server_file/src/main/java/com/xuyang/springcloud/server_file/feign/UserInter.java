@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -36,21 +35,9 @@ public interface UserInter {
     @RequestMapping(value = "deleteUser.do", method = RequestMethod.GET)
     public Result deleteUser(@RequestBody User user);
 
-    /**
-     * 获取用户列表：
-     * 整个用户信息
-     *
-     * @param user
-     * @return
-     */
     @RequestMapping(value = "getAccountUserInfoList.do", method = RequestMethod.GET)
     public List<AccountUser> getAccountUserInfoList(@RequestBody AccountUser user);
 
-    /**
-     * 获取操作人的信息
-     * @param user
-     * @return
-     */
     @RequestMapping(value = "getAccountUserInfo.do", method = RequestMethod.GET)
     public AccountUser getAccountUserInfo(@RequestBody AccountUser user);
 

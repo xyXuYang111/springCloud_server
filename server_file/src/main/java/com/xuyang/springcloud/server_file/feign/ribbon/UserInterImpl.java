@@ -1,11 +1,13 @@
-package com.xuyang.springcloud.server_file.feign;
+package com.xuyang.springcloud.server_file.feign.ribbon;
 
+import com.xuyang.springcloud.server_file.feign.UserInter;
 import com.xuyang.springcloud.server_file.model.user.AccountUser;
 import com.xuyang.springcloud.server_file.model.user.Result;
 import com.xuyang.springcloud.server_file.model.user.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
@@ -16,8 +18,9 @@ import java.util.List;
  * @Description: 熔断机制：请求失败
  */
 @Slf4j
+@Service
 @Component
-public class UserInterImpl implements UserInter{
+public class UserInterImpl implements UserInter {
 
     @Autowired
     private RestTemplate restTemplate;
