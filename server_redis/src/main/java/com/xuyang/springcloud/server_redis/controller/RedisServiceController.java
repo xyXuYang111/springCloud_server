@@ -1,8 +1,6 @@
 package com.xuyang.springcloud.server_redis.controller;
 
-import com.sun.org.apache.regexp.internal.RE;
 import com.xuyang.springcloud.server_redis.model.RedisModel;
-import com.xuyang.springcloud.server_redis.model.User;
 import com.xuyang.springcloud.server_redis.server.RedisService;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
