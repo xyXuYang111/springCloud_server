@@ -1,0 +1,58 @@
+redis
+   redis-benchmark.exe         #基准测试
+   redis-check-aof.exe         # aof
+   redis-check-dump.exe        # dump
+   redis-cli.exe               # 客户端
+   redis-server.exe            # 服务器
+   redis.windows.conf          # 配置文件
+
+   redis下载路径：https://github.com/MSOpenTech/redis
+
+   redis安装在windows：
+       修改redis.windows.conf中的maxheap 1024000000
+
+       进入redis文件路径
+       控住台输入：redis-server  redis.windows.conf
+
+   redis修改密码： redis.windows.conf中的
+                 requirepass 123   指定密码123
+
+   redis远程访问：
+
+   redis可视化工具：
+
+   redis持久化数据：
+     为什么要持久化redis的数据：
+        redis的数据存储你可以把它当成一个cookie。如果你不生成缓存文件，当服务挂掉之后或者关闭之后，所有数据都会清空
+        持久化就是将数据记录到磁盘中，当redis服务停止后，可以通过快照，或者aof强制写到磁盘中
+
+      rdb:
+        fork一个进程，遍历hash table，利用copy on write，把整个db dump保存下来。
+        save, shutdown, slave 命令会触发这个操作。
+        粒度比较大，如果save, shutdown, slave 之前crash了，则中间的操作没办法恢复。
+
+      aof:
+        把写操作指令，持续的写到一个类似日志文件里。（类似于从postgresql等数据库导出sql一样，只记录写操作）
+        粒度较小，crash之后，只有crash之前没有来得及做日志的操作没办法恢复。
+
+      两者比较
+        rdb性能上优于aof
+           rdb是在一段时间内，如果你进行了数据修改，就对数据进行快照处理
+           aof是你只要操作了指令，就写到内存里面。
+
+        aof的数据准确性强于rdb
+           aof是实时的进行数据保存，rdb是一段时间内容触发性的实时数据修改.
+
+      开启数据持久化
+        redis默认是开启rdb的方式----快照文件：dump.rdb
+          配置：
+             save 900 1 # 900秒内如果超过一个key被修改，则发起快照保存
+             save 300 10
+             save 60 10000
+
+        aof持久化开启方式：----持久化数据文件：appendonly.aof
+          配置：
+             appendonly yes # 启动aof持久化方式 有三种修改方法。(默认是 no)
+             appendfsync always # 收到写命令就立即写入到磁盘，效率最慢，但是保证完全的持久化。
+             appendfsync everysec # 每秒钟写入磁盘一次，在性能和持久化方面作了很好的折中。
+             appendfsync no # 完全依赖os，性能最好，持久化没保证。

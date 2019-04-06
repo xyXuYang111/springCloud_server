@@ -17,7 +17,6 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="server_redis" target="1.8" />
       <module name="zipkin_server" target="1.8" />
     </bytecodeTargetLevel>
   </component>
@@ -27,6 +26,7 @@
       <module name="server_api" options="-parameters" />
       <module name="server_email" options="-parameters" />
       <module name="server_file" options="-parameters" />
+      <module name="server_redis" options="-parameters" />
       <module name="server_user" options="-parameters" />
       <module name="zuul" options="-parameters" />
     </option>

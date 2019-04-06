@@ -23,3 +23,6 @@ zuul:
     email:
       path: /email/*
       serviceId : email
+    redis:
+      path: /redis/*
+      serviceId: redis
