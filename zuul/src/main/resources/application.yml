@@ -29,3 +29,6 @@ zuul:
     ecache:
       path: /ecache/*
       serviceId: ecache
+    kafka:
+      path: /kafka/*
+      serviceId: kafka

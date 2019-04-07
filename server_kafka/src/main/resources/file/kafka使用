@@ -1,0 +1,7 @@
+1，kafka的使用
+    1，简单使用，消息监听
+         通过相关方法可以做到消息的事实监听发布
+
+    2，启动方式：先将zookepper启动，然后在通过指令启动kafka
+          zookepper：zkServer
+          kafka：.\bin\windows\kafka-server-start.bat .\config\server.properties
