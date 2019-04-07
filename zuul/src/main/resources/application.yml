@@ -26,3 +26,6 @@ zuul:
     redis:
       path: /redis/*
       serviceId: redis
+    ecache:
+      path: /ecache/*
+      serviceId: ecache

@@ -23,6 +23,7 @@
         <option value="$PROJECT_DIR$/server_api/pom.xml" />
         <option value="$PROJECT_DIR$/redis/pom.xml" />
         <option value="$PROJECT_DIR$/server_redis/pom.xml" />
+        <option value="$PROJECT_DIR$/server_ecache/pom.xml" />
       </list>
     </option>
   </component>

@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="registry" />
         <module name="server_api" />
+        <module name="server_ecache" />
         <module name="server_email" />
         <module name="server_file" />
         <module name="server_redis" />
@@ -24,6 +25,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="registry" options="-parameters" />
       <module name="server_api" options="-parameters" />
+      <module name="server_ecache" options="-parameters" />
       <module name="server_email" options="-parameters" />
       <module name="server_file" options="-parameters" />
       <module name="server_redis" options="-parameters" />
