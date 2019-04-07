@@ -3,6 +3,8 @@ package com.xuyang.springcloud.server_kafka.listener;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.kafka.annotation.EnableKafka;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
@@ -13,7 +15,8 @@ import org.springframework.stereotype.Component;
  */
 @Data
 @Slf4j
-@Component
+@Configuration
+@EnableKafka
 public class KafkConsumerListener {
 
     @KafkaListener(topics = "test")
