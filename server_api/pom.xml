@@ -17,7 +17,7 @@
 
 	<properties>
 		<java.version>1.8</java.version>
-		<zxing-version>3.2.1</zxing-version>
+		<zxing-version>3.3.3</zxing-version>
 		<spring-cloud.version>Greenwich.SR1</spring-cloud.version>
 	</properties>
 
