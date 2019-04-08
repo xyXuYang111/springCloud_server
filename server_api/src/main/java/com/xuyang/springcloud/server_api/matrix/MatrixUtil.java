@@ -1,6 +1,5 @@
 package com.xuyang.springcloud.server_api.matrix;
 
-import ch.qos.logback.core.util.ContextUtil;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
 import com.google.zxing.MultiFormatWriter;

@@ -1,5 +1,6 @@
 package com.xuyang.springcloud.server_file.feign;
 
+import com.xuyang.springcloud.server_file.feign.ribbon.UserInterImpl;
 import com.xuyang.springcloud.server_file.model.user.AccountUser;
 import com.xuyang.springcloud.server_file.model.user.Result;
 import com.xuyang.springcloud.server_file.model.user.User;
@@ -16,7 +17,7 @@ import java.util.List;
  * @Date: 2019/3/30 01:24
  * @Description:
  */
-@FeignClient(value = "", fallback = UserInterImpl.class)
+@FeignClient(value = "user", fallback = UserInterImpl.class)
 @Component
 public interface UserInter {
 
