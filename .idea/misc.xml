@@ -4,6 +4,7 @@
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/registry" />
     <file type="web" url="file://$PROJECT_DIR$/server_api" />
+    <file type="web" url="file://$PROJECT_DIR$/server_elasticsearch" />
     <file type="web" url="file://$PROJECT_DIR$/server_email" />
     <file type="web" url="file://$PROJECT_DIR$/server_file" />
     <file type="web" url="file://$PROJECT_DIR$/server_kafka" />
@@ -28,6 +29,7 @@
         <option value="$PROJECT_DIR$/server_ecache/pom.xml" />
         <option value="$PROJECT_DIR$/server_quartz/pom.xml" />
         <option value="$PROJECT_DIR$/server_kafka/pom.xml" />
+        <option value="$PROJECT_DIR$/server_elasticsearch/pom.xml" />
       </list>
     </option>
   </component>
