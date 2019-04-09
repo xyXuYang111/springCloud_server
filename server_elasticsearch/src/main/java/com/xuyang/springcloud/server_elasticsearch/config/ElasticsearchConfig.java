@@ -6,6 +6,7 @@ import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.common.transport.TransportAddress;
 import org.elasticsearch.transport.client.PreBuiltTransportClient;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
@@ -22,7 +23,7 @@ import java.net.InetAddress;
 @Slf4j
 @Configuration
 @EnableElasticsearchRepositories(basePackages = "com.xuyang.springcloud.server_elasticsearch.repository")
-public class ElastricsearchConfig {
+public class ElasticsearchConfig {
 
     private String EsHost = "127.0.0.1";
 
@@ -32,14 +33,14 @@ public class ElastricsearchConfig {
     public TransportClient elasticsearchClient() throws Exception {
         log.info("连接elasticsearch的Client");
         //创建客户端
-      TransportClient client = new PreBuiltTransportClient(Settings.EMPTY).addTransportAddresses(
-                new TransportAddress(InetAddress.getByName(EsHost),EsPort));
-      log.info(client.toString());
+        TransportClient client = new PreBuiltTransportClient(Settings.EMPTY).addTransportAddresses(
+                new TransportAddress(InetAddress.getByName(EsHost), EsPort));
+        log.info(client.toString());
         return client;
     }
 
     @Bean(name = "elasticsearchTemplate")
-    public ElasticsearchTemplate elasticsearchTemplate(TransportClient client) {
+    public ElasticsearchTemplate elasticsearchTemplate(@Qualifier("elasticsearchClient") TransportClient client) {
         log.info("配置spring-data-elasticsearch");
         return new ElasticsearchTemplate(client);
     }
