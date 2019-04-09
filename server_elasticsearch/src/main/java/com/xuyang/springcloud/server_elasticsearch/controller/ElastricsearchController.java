@@ -42,7 +42,7 @@ public class ElastricsearchController {
         return "es查询操作成功";
     }
 
-    @RequestMapping(value = "findEsValue.do", method = RequestMethod.GET)
+    @RequestMapping(value = "findEsAllValue.do", method = RequestMethod.GET)
     public String findAllEsValue(){
         Iterable<User> userList = userService.findAll();
         User user = userList.iterator().next();
