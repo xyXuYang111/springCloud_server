@@ -2,18 +2,13 @@ package com.xuyang.springcloud.server_elasticsearch.config;
 
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
-import org.elasticsearch.client.Client;
-import org.elasticsearch.client.ElasticsearchClient;
 import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.common.settings.Settings;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.elasticsearch.common.transport.TransportAddress;
+import org.elasticsearch.transport.client.PreBuiltTransportClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.elasticsearch.client.TransportClientFactoryBean;
-import org.springframework.data.elasticsearch.core.ElasticsearchOperations;
 import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
-import org.springframework.data.elasticsearch.core.convert.ElasticsearchConverter;
 import org.springframework.data.elasticsearch.repository.config.EnableElasticsearchRepositories;
 
 import java.net.InetAddress;
@@ -33,17 +28,19 @@ public class ElastricsearchConfig {
 
     private int EsPort = 9300;
 
-    private String EsClusterName = "mkyong-cluster";
-
     @Bean(name = "elasticsearchClient")
     public TransportClient elasticsearchClient() throws Exception {
-        TransportClientFactoryBean factory = new TransportClientFactoryBean();
-        factory.setClusterName(EsClusterName);
-        return factory.getObject();
+        log.info("连接elasticsearch的Client");
+        //创建客户端
+      TransportClient client = new PreBuiltTransportClient(Settings.EMPTY).addTransportAddresses(
+                new TransportAddress(InetAddress.getByName(EsHost),EsPort));
+      log.info(client.toString());
+        return client;
     }
 
     @Bean(name = "elasticsearchTemplate")
     public ElasticsearchTemplate elasticsearchTemplate(TransportClient client) {
+        log.info("配置spring-data-elasticsearch");
         return new ElasticsearchTemplate(client);
     }
 }
