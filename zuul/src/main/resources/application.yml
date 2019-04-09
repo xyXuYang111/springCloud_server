@@ -32,3 +32,6 @@ zuul:
     kafka:
       path: /kafka/*
       serviceId: kafka
+    elastricsearch:
+      path: /elastricsearch/*
+      serviceId: elastricsearch

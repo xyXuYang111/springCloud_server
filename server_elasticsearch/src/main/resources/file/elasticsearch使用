@@ -1,0 +1,22 @@
+es使用情况
+    关于es构造：
+       索引(index): 相当于数据库（用于定义文档类型存储，同一个字段只能定义一个数据类型）
+       文件类型（type）：相当于数据库中的关系表（用来描述文档中的各个字段的定义）
+       文档（docunment）：相当于关系表中的数据行（包含一个或多个存有数据的字段）
+       字段（field）：相当于关系型数据的key/value（一个属性）
+
+    es的两个端口
+        9300端口：es之间通信端口
+        9200端口：es对外提供的端口
+
+    es安装
+        windows安装es：elasticsearch.bat
+
+    springboot集成es
+        集成：spring.data.elasticsearch.cluster-name=elasticsearch
+              spring.data.elasticsearch.cluster-nodes=127.0.0.1:9300
+              spring.data.elasticsearch.repositories.enabled=true
+
+        es异常：
+        Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: Unsupported ID type interface java.io.Serializable
+        接口实现ElasticsearchRepository<EsModel, String>，没有指定属性
