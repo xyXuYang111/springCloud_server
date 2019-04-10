@@ -20,3 +20,6 @@ es使用情况
         es异常：
         Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: Unsupported ID type interface java.io.Serializable
         接口实现ElasticsearchRepository<EsModel, String>，没有指定属性
+
+    es连接服务
+        必须版本和版本之间相互对应，否则很有问题
