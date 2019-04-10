@@ -18,7 +18,11 @@ public class EmailQqTest {
         email.setReceiveNumber("1824650783@qq.com");
         email.setReceivePassword("wjtbyokdodejbccj");
 
-        EmailQq emailQq = new EmailQq();
-        emailQq.sendEmailQq(email);
+        try {
+            EmailQq emailQq = new EmailQq();
+            emailQq.sendEmailQq(email);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -23,8 +23,11 @@ public class User implements Serializable {
 
     @Id
     private String id;
+
     private String title;
+
     private String author;
+
     private String releaseDate;
 
     public String getId() {
