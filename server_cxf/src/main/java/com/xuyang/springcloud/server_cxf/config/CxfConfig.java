@@ -4,13 +4,24 @@ import com.xuyang.springcloud.server_cxf.service.CommonService;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.cxf.Bus;
+
+import javax.annotation.Resource;
 import javax.xml.ws.Endpoint;
+
+import org.apache.cxf.bus.spring.SpringBus;
+import org.apache.cxf.feature.Feature;
+import org.apache.cxf.interceptor.Interceptor;
 import org.apache.cxf.jaxws.EndpointImpl;
+import org.apache.cxf.message.Message;
 import org.apache.cxf.transport.servlet.CXFServlet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -23,7 +34,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class CxfConfig {
 
-    @Autowired
+    @Resource(name = "cxf")
     private Bus bus;
 
     @Autowired
