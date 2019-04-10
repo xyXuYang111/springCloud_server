@@ -3,6 +3,7 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/registry" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/server_api" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/server_cxf" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/server_ecache" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/server_elasticsearch" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/server_email" charset="UTF-8" />
