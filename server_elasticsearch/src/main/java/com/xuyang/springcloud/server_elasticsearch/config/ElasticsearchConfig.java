@@ -27,7 +27,7 @@ public class ElasticsearchConfig {
 
     private String EsHost = "127.0.0.1";
 
-    private int EsPort = 9200;
+    private int EsPort = 9300;
 
     @Bean(name = "elasticsearchClient")
     public TransportClient elasticsearchClient() throws Exception {
