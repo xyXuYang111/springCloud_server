@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Iterator;
 import java.util.List;
 
@@ -26,7 +27,7 @@ public class ElastricsearchController {
     private UserService userService;
 
     @RequestMapping(value = "insertEsValue.do", method = RequestMethod.GET)
-    public String insertEsValue(){
+    public String insertEsValue(HttpServletRequest request){
         User user = new User();
         user.setId("1");
         user.setAuthor("xuyang");

@@ -32,6 +32,7 @@
         <option value="$PROJECT_DIR$/server_kafka/pom.xml" />
         <option value="$PROJECT_DIR$/server_elasticsearch/pom.xml" />
         <option value="$PROJECT_DIR$/server_cxf/pom.xml" />
+        <option value="$PROJECT_DIR$/server_rabbitmq/pom.xml" />
       </list>
     </option>
   </component>
