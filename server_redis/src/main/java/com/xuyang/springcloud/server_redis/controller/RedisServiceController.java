@@ -69,7 +69,7 @@ public class RedisServiceController {
         return "key-map获取成功";
     }
 
-    @RequestMapping(value = "insertList.do", method = RequestMethod.GET)
+    @RequestMapping(value = "insertList.do", method = RequestMethod.POST)
     public String insertList(@RequestBody RedisModel redisModel){
         log.info("key-list存储");
         String key = redisModel.getKey();

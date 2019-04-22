@@ -1,5 +1,7 @@
 package com.xuyang.springcloud.server_file.aop;
 
+import com.xuyang.springcloud.server_file.feign.RedisFeign;
+import com.xuyang.springcloud.server_file.feign.model.RedisModel;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
@@ -17,6 +19,9 @@ import org.springframework.stereotype.Component;
 @Component
 @Aspect
 public class FileExceptionAspect {
+
+    @Autowired
+    private RedisFeign redisFeign;
 
     //指定切入点表达式，拦截那些方法，即为那些类生成代理对象
     //@Pointcut("execution(* com.bie.aop.UserDao.save(..))")  ..代表所有参数
@@ -64,6 +69,13 @@ public class FileExceptionAspect {
             log.info("第" + (i+1) + "个参数为:" + args[i]);
             stringBuilder.append(args[i]).append(",");
         }
+
+        RedisModel redisModel = new RedisModel();
+        redisModel.setKey(methodName);
+        redisModel.setObject(stringBuilder.toString());
+
+        //将key存放到
+        redisFeign.insertObjectList(redisModel);
     }
 
     /**
