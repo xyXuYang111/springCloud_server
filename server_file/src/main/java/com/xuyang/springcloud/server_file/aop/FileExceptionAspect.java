@@ -71,11 +71,11 @@ public class FileExceptionAspect {
         }
 
         RedisModel redisModel = new RedisModel();
-        redisModel.setKey(methodName);
-        redisModel.setObject(stringBuilder.toString());
+        redisModel.setKey(stringBuilder.toString());
+        redisModel.setObject(e.getMessage());
 
         //将key存放到
-        redisFeign.insertObjectList(redisModel);
+        redisFeign.insertString(redisModel);
     }
 
     /**
@@ -96,5 +96,14 @@ public class FileExceptionAspect {
             log.info("第" + (i+1) + "个参数为:" + args[i]);
             stringBuilder.append(args[i]).append(",");
         }
+
+        RedisModel redisModel = new RedisModel();
+        redisModel.setKey(stringBuilder.toString());
+        redisModel.setObject("文件操作成功");
+
+        //将key存放到
+        redisFeign.insertString(redisModel);
     }
+
+
 }
