@@ -25,6 +25,9 @@ public class RedisModel implements Serializable {
     @JsonProperty(value = "value")
     private String value;
 
+    @JsonProperty(value = "object")
+    private Object object;
+
     @JsonProperty(value = "num")
     private int num;
 
@@ -34,6 +37,22 @@ public class RedisModel implements Serializable {
 
     public void setKey(String key) {
         this.key = key;
+    }
+
+    public Object getObject() {
+        return object;
+    }
+
+    public void setObject(Object object) {
+        this.object = object;
+    }
+
+    public int getNum() {
+        return num;
+    }
+
+    public void setNum(int num) {
+        this.num = num;
     }
 
     public String getValue() {

@@ -1,18 +1,16 @@
 package com.xuyang.springcloud.server_file.controller;
 
-import com.xuyang.springcloud.server_file.model.json.ResultJson;
-import com.xuyang.springcloud.server_file.model.json.XmlJson;
-import com.xuyang.springcloud.server_file.model.xml.XmlModel;
+import com.xuyang.springcloud.server_file.model.Files;
+import com.xuyang.springcloud.server_file.service.FilesService;
 import com.xuyang.springcloud.server_file.util.FileUtil;
-import com.xuyang.springcloud.server_file.util.JsonChangeXml;
-import com.xuyang.springcloud.server_file.util.ResultUtil;
-import com.xuyang.springcloud.server_file.util.XmlUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -25,30 +23,89 @@ import java.util.List;
 @RestController
 public class FileController {
 
+    @Autowired
+    private FilesService filesService;
+
     /**
-     * 将报文转换成xml，写到文本中
-     * 将用户信息通过报文写到文本中
-     * @param xmlJson
+     * 文件备份
+     * @param files
      * @return
      */
-    @RequestMapping(value = "writeUserInfoInFile.do", method = RequestMethod.GET)
-    public ResultJson writeUserInfoInFile(@RequestBody XmlJson xmlJson){
-        try {
-            String filePath = xmlJson.getFilePath();
-            //xmlJson转换成xmlModel
-            XmlModel xmlModel = JsonChangeXml.jsonChangeXmlModel(xmlJson);
-            //将xml转换成字符串
-            String xml = XmlUtil.convertObjectToXmlStr(xmlModel);
-            log.info("报文结构:"+xml);
-            //xml字符串写到文档中
-            FileUtil.valueWriteInFile(xml, filePath);
+    @RequestMapping(value = "copyFileController.do", method = RequestMethod.POST)
+    public String copyFileController(@RequestBody Files files){
 
-            //调用相关方法，返回结果集
-            return ResultUtil.successResult(filePath);
+        try {
+            String fileName = files.getFileName();
+            String filePath = "D:\\file\\write\\" + fileName;
+            File filesInfo = new File(filePath);
+            if(!filesInfo.exists()){
+                return "需要备份文件不存在";
+            }
+
+            String copyPath = "D:\\file\\history\\" + fileName;
+            File copyFile = new File(copyPath);
+            if (!copyFile.exists()) {
+                copyFile.createNewFile();
+            }
+            //文件备份
+            FileUtil.copyFile(filesInfo, copyFile);
+
+            files.setFilePath(copyPath);
+            //添加复制文件信息
+            filesService.insertFiles(files);
+            return "文件备份成功";
         } catch (Exception e) {
             e.printStackTrace();
-            return ResultUtil.errorResult(e.getMessage());
+            return e.getMessage();
         }
     }
 
+    @RequestMapping(value = "createFileController.do", method = RequestMethod.POST)
+    public String createFileController(@RequestBody Files files){
+
+        try {
+            String fileContext = files.getFileContext();
+            String fileName = files.getFileName();
+
+            String filePath = "D:\\file\\write\\" + fileName;
+            File writeFile = new File(filePath);
+            if (!writeFile.exists()) {
+                writeFile.createNewFile();
+            }
+            //文件创建
+            FileUtil.writeWordInfoFile(fileContext, filePath);
+            files.setFilePath(filePath);
+            //新增文件
+            filesService.insertFiles(files);
+
+            return "文件生成成功";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return e.getMessage();
+        }
+    }
+
+    @RequestMapping(value = "fileListController.do", method = RequestMethod.POST)
+    public List<Files> fileListController(@RequestBody Files files){
+        log.info("获取某个用户下的所有文件信息");
+        try {
+            List<Files> filesList = filesService.getFilesList(files);
+            return filesList;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @RequestMapping(value = "fileInfoController.do", method = RequestMethod.POST)
+    public Files fileInfoController(@RequestBody Files files){
+        log.info("获取指定文件信息");
+        try {
+            Files filesInfo = filesService.getFilesInfo(files);
+            return filesInfo;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

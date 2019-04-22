@@ -80,6 +80,16 @@ public class RedisServiceController {
         return "key-list存储成成功";
     }
 
+    @RequestMapping(value = "insertObjectList.do", method = RequestMethod.GET)
+    public String insertObjectList(@RequestBody RedisModel redisModel){
+        log.info("key-list存储");
+        String key = redisModel.getKey();
+        Object object = redisModel.getObject();
+        redisService.lSet(key, object);
+        log.info("存储成功");
+        return "key-list存储成成功";
+    }
+
     @RequestMapping(value = "insertGetList.do", method = RequestMethod.GET)
     public String insertGetList(@RequestBody RedisModel redisModel){
         log.info("key-list获取");

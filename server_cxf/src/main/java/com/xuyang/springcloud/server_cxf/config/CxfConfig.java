@@ -43,7 +43,7 @@ public class CxfConfig {
 
     /**
      * 此方法作用是改变项目中服务名的前缀名，此处127.0.0.1或者localhost不能访问时，请使用ipconfig查看本机ip来访问
-     * 此方法被注释后:wsdl访问地址为http://127.0.0.1:8080/services/user?wsdl
+     * 此方法被注释后:wsdl访问地址为http://127.0.0.1:8080/services/file?wsdl
      * 去掉注释后：wsdl访问地址为：http://127.0.0.1:8080/soap/user?wsdl
      * @return
      */
@@ -58,9 +58,9 @@ public class CxfConfig {
      * **/
     @Bean(name = "endpoint")
     public Endpoint endpoint() {
-        log.info("cxf服务发布，发布路径：http://127.0.0.1:8080/soap/user?wsdl");
+        log.info("cxf服务发布，发布路径：http://127.0.0.1:8080/soap/file?wsdl");
         EndpointImpl endpoint = new EndpointImpl(bus, commonService);
-        endpoint.publish("/user");
+        endpoint.publish("/file");
         return endpoint;
     }
 

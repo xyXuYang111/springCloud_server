@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="Encoding">
+  <component name="Encoding" addBOMForNewFiles="with NO BOM">
     <file url="file://$PROJECT_DIR$/registry" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/server_api" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/server_cxf" charset="UTF-8" />
@@ -8,13 +8,16 @@
     <file url="file://$PROJECT_DIR$/server_elasticsearch" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/server_email" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/server_file" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/server_file/src/main/resources/mybatis/file/fileMapper.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/server_file/src/main/resources/mybatis/file/userMapper.xml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/server_file/src/main/resources/mybatis/mybatis-config.xml" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/server_file/src/main/resources/mybatis/user/userMapper.xml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/server_kafka" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/server_quartz" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/server_rabbitmq" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/server_redis" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/server_user" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/server_user/src/main/resources/mybatis/mybatis-config.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/server_user/src/main/resources/mybatis/user/fileMapper.xml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/zuul" charset="UTF-8" />
   </component>
 </project>

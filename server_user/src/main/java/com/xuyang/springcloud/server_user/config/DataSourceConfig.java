@@ -1,7 +1,7 @@
-package com.xuyang.springcloud.server_file.config;
+package com.xuyang.springcloud.server_user.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
-import com.xuyang.springcloud.server_file.annotation.MyBatisDao;
+import com.xuyang.springcloud.server_user.annotation.MyBatisDao;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -24,18 +24,18 @@ import javax.sql.DataSource;
 @Slf4j
 @Data
 @Configuration
-@MapperScan(value = "com.xuyang.springcloud.server_file.dao",
+@MapperScan(value = "com.xuyang.springcloud.server_user.dao",
         annotationClass = MyBatisDao.class,
-        sqlSessionFactoryRef = "userConfigSqlSessionFactory")
+        sqlSessionFactoryRef = "configSqlSessionFactory")
 public class DataSourceConfig {
 
-    private String url = "jdbc:mysql://127.0.0.1:3306/project?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC";
+    private String url = "jdbc:mysql://127.0.0.1:3306/file?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC";
 
     private String userName = "root";
 
     private String password = "1234";
 
-    private String driverClass = "com.mysql.cj.jdbc.Driver";
+    private String driverClass = "com.mysql.jdbc.Driver";
 
     private String mapperLocations = "classpath:/mybatis/*/*.xml";
 
@@ -45,7 +45,7 @@ public class DataSourceConfig {
      * 数据源：work
      * @return
      */
-    @Bean(name = "userDataSource")
+    @Bean(name = "dataSource")
     public DataSource primaryDataSource() {
         log.info("连接数据库");
         DruidDataSource dataSource = new DruidDataSource();
@@ -62,9 +62,9 @@ public class DataSourceConfig {
      * @return
      * @throws Exception
      */
-    @Bean(name = "userConfigSqlSessionFactory")
+    @Bean(name = "configSqlSessionFactory")
     public SqlSessionFactory mybatisSqlSessionFactory(
-            @Qualifier("userDataSource") DataSource workDataSource)
+            @Qualifier("dataSource") DataSource workDataSource)
             throws Exception {
         log.info("spring和mybatis的整合，配置主从mapper");
         final SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
@@ -83,9 +83,9 @@ public class DataSourceConfig {
      * @param dataSource
      * @return
      */
-    @Bean(name = "userTransactional")
+    @Bean(name = "transactional")
     public DataSourceTransactionManager workTransactional(
-            @Qualifier("userDataSource") DataSource dataSource){
+            @Qualifier("dataSource") DataSource dataSource){
         log.info("配置事务管理");
         return new DataSourceTransactionManager(dataSource);
     }
@@ -95,9 +95,9 @@ public class DataSourceConfig {
      * @param sqlSessionFactory
      * @return
      */
-    @Bean(name = "userSqlSessionTemplate")
+    @Bean(name = "sqlSessionTemplate")
     public SqlSessionTemplate workSqlSessionTemplate(
-            @Qualifier("userConfigSqlSessionFactory") SqlSessionFactory sqlSessionFactory){
+            @Qualifier("configSqlSessionFactory") SqlSessionFactory sqlSessionFactory){
         return new SqlSessionTemplate(sqlSessionFactory);
     }
 }

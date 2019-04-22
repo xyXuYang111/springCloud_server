@@ -2,6 +2,7 @@ package com.xuyang.springcloud.server_redis.controller;
 
 import com.xuyang.springcloud.server_redis.RedisRecevier.MessageReceiver;
 import com.xuyang.springcloud.server_redis.RedisSender.MessageSender;
+import com.xuyang.springcloud.server_redis.model.MessageModel;
 import com.xuyang.springcloud.server_redis.model.User;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
@@ -24,11 +25,19 @@ public class RedisListenController {
     @Autowired
     private MessageSender messageSender;
 
-    @RequestMapping(value = "messageSend.do", method = RequestMethod.GET)
-    public String messageSend(@RequestBody User user){
+    @RequestMapping(value = "messageSuccess.do", method = RequestMethod.GET)
+    public String messageSuccess(@RequestBody  MessageModel messageModel){
         log.info("消息接受机制");
-        log.info("消息内容：" + user.toString());
-        messageSender.sendMessage(user.toString());
+        log.info("消息内容：" + messageModel.getDesc());
+        messageSender.sendMessage(messageModel.toString());
+        return "消息机制发送";
+    }
+
+    @RequestMapping(value = "messageError.do", method = RequestMethod.GET)
+    public String messageError(@RequestBody  MessageModel messageModel){
+        log.info("接受成功消息机制");
+        log.info("消息内容：" + messageModel.getDesc());
+        messageSender.sendMessage(messageModel.toString());
         return "消息机制发送";
     }
 }

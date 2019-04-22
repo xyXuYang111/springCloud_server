@@ -17,5 +17,7 @@ public class MessageReceiver {
     public void receiveMessage(String message){
         log.info("测试接受数据");
         log.info("测试接受的数据：" + message);
+
+        //存储到redis库中
     }
 }
