@@ -8,7 +8,6 @@
         <outputRelativeToContentRoot value="true" />
         <module name="registry" />
         <module name="server_api" />
-        <module name="server_cxf" />
         <module name="server_ecache" />
         <module name="server_elasticsearch" />
         <module name="server_email" />
@@ -22,6 +21,12 @@
         <module name="web03" />
         <module name="zuul" />
       </profile>
+      <profile name="Annotation profile for note" enabled="true">
+        <sourceOutputDir name="../note/target/generated-sources/annotations" />
+        <sourceTestOutputDir name="../note/target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="server_note" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="registry" target="1.8" />
@@ -32,6 +37,7 @@
       <module name="server_email" target="1.8" />
       <module name="server_file" target="1.8" />
       <module name="server_kafka" target="1.8" />
+      <module name="server_note" target="1.8" />
       <module name="server_quartz" target="1.8" />
       <module name="server_rabbitmq" target="1.8" />
       <module name="server_redis" target="1.8" />
