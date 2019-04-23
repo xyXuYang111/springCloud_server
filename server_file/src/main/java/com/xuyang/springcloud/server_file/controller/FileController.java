@@ -2,6 +2,7 @@ package com.xuyang.springcloud.server_file.controller;
 
 import com.xuyang.springcloud.server_file.model.Files;
 import com.xuyang.springcloud.server_file.service.FilesService;
+import com.xuyang.springcloud.server_file.util.DateUtil;
 import com.xuyang.springcloud.server_file.util.FileUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * @Auther: xuy
@@ -36,13 +40,20 @@ public class FileController {
 
         try {
             String fileName = files.getFileName();
-            String filePath = "D:\\file\\write\\" + fileName;
+            String filePath = "D:\\file\\write\\" + DateUtil.getNowDate() + fileName;
             File filesInfo = new File(filePath);
             if(!filesInfo.exists()){
                 return "需要备份文件不存在";
             }
 
-            String copyPath = "D:\\file\\history\\" + fileName;
+            String copyPath = "D:\\file\\history\\" + DateUtil.getNowDate() + "\\" + fileName;
+
+            String filePa = "D:\\file\\history\\" + DateUtil.getNowDate();
+            File filePaUrl = new File(filePa);
+            if (!filePaUrl.exists()) {
+                filePaUrl.mkdir();
+            }
+
             File copyFile = new File(copyPath);
             if (!copyFile.exists()) {
                 copyFile.createNewFile();
@@ -66,8 +77,7 @@ public class FileController {
         try {
             String fileContext = files.getFileContext();
             String fileName = files.getFileName();
-
-            String filePath = "D:\\file\\write\\" + fileName;
+            String filePath = "D:\\file\\write\\" + DateUtil.getNowDate() + "\\" + fileName;
             File writeFile = new File(filePath);
             if (!writeFile.exists()) {
                 writeFile.createNewFile();

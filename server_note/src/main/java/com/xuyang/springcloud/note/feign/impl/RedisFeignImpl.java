@@ -1,13 +1,11 @@
-package com.xuyang.springcloud.server_file.feign.impl;
+package com.xuyang.springcloud.note.feign.impl;
 
-import com.xuyang.springcloud.server_file.feign.RedisFeign;
-import com.xuyang.springcloud.server_file.feign.model.RedisModel;
+import com.xuyang.springcloud.note.feign.RedisFeign;
+import com.xuyang.springcloud.note.feign.model.RedisModel;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
 /**
  * @Auther: cypc
@@ -18,10 +16,8 @@ import org.springframework.web.client.RestTemplate;
 @Slf4j
 @Component
 @Service
-public class RedisFeignImpl implements RedisFeign{
+public class RedisFeignImpl implements RedisFeign {
 
-    @Autowired
-    private RestTemplate restTemplate;
 
     @Override
     public String insertObjectList(RedisModel redisModel) {
