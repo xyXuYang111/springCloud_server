@@ -8,18 +8,18 @@
         <outputRelativeToContentRoot value="true" />
         <module name="springCloud_server" />
         <module name="registry" />
+        <module name="server_email" />
         <module name="zuul" />
         <module name="web03" />
         <module name="server_ecache" />
         <module name="server_kafka" />
         <module name="server_rabbitmq" />
         <module name="server_file" />
-        <module name="server_user" />
         <module name="server_quartz" />
         <module name="server_note" />
         <module name="server_redis" />
         <module name="server_api" />
-        <module name="server_email" />
+        <module name="server_user" />
         <module name="server_elasticsearch" />
       </profile>
     </annotationProcessing>
