@@ -95,6 +95,14 @@ public class FileController {
         }
     }
 
+    @RequestMapping(value = "zipFileController.do", method = RequestMethod.POST)
+    public String zipFileController(@RequestBody Files files){
+
+        log.info("文件打包服务");
+
+        return "文件打包成功";
+    }
+
     @RequestMapping(value = "fileListController.do", method = RequestMethod.POST)
     public List<Files> fileListController(@RequestBody Files files){
         log.info("获取某个用户下的所有文件信息");
