@@ -1,10 +1,13 @@
 package com.xuyang.springcloud.server_quartz.quartz;
 
+import com.xuyang.springcloud.server_quartz.util.DateUtil;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
+
+import java.io.File;
 
 /**
  * @Auther: xuy
@@ -17,8 +20,19 @@ import org.springframework.scheduling.annotation.Scheduled;
 @EnableScheduling
 public class QuartzSchedule {
 
-    @Scheduled(cron = "*/5 * * * * ?")
-    public void text(){
-        log.info("spring-tesk定时调度，每五秒执行一次");
+    @Scheduled(cron = "0 0 0 * * ?")
+    public void createFileSchedule(){
+        log.info("定时创建文件");
+        String nowDate = DateUtil.getNowDate();
+        File file = new File("D:\\file\\write\\" + nowDate);
+        if(!file.exists()){
+            file.mkdir();
+        }
+    }
+
+    @Scheduled(cron = "0 50 23 * * ?")
+    public void zipFileSchedule(){
+       log.info("定时压缩文件");
+
     }
 }

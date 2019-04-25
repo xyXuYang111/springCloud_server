@@ -28,7 +28,7 @@ public class RedisServiceController {
     @Autowired
     private RedisService redisService;
 
-    @RequestMapping(value = "insertString.do", method = RequestMethod.GET)
+    @RequestMapping(value = "insertString.do", method = RequestMethod.POST)
     public String insertString(@RequestBody RedisModel redisModel){
         log.info("key-value存储");
         String key = redisModel.getKey();
@@ -38,7 +38,7 @@ public class RedisServiceController {
         return "key-value存储成成功";
     }
 
-    @RequestMapping(value = "insertGetString.do", method = RequestMethod.GET)
+    @RequestMapping(value = "insertGetString.do", method = RequestMethod.POST)
     public String insertGetString(@RequestBody RedisModel redisModel){
         log.info("key-value获取");
         String key = redisModel.getKey();
@@ -47,7 +47,7 @@ public class RedisServiceController {
         return "key-value获取成功";
     }
 
-    @RequestMapping(value = "insertMap.do", method = RequestMethod.GET)
+    @RequestMapping(value = "insertMap.do", method = RequestMethod.POST)
     public String insertMap(@RequestBody RedisModel redisModel){
         log.info("key-map存储");
         String key = redisModel.getKey();
@@ -58,7 +58,7 @@ public class RedisServiceController {
         return "key-map存储成成功";
     }
 
-    @RequestMapping(value = "insertGetMap.do", method = RequestMethod.GET)
+    @RequestMapping(value = "insertGetMap.do", method = RequestMethod.POST)
     public String insertGetMap(@RequestBody RedisModel redisModel){
         log.info("key-map获取");
         String key = redisModel.getKey();
@@ -80,7 +80,7 @@ public class RedisServiceController {
         return "key-list存储成成功";
     }
 
-    @RequestMapping(value = "insertObjectList.do", method = RequestMethod.GET)
+    @RequestMapping(value = "insertObjectList.do", method = RequestMethod.POST)
     public String insertObjectList(@RequestBody RedisModel redisModel){
         log.info("key-list存储");
         String key = redisModel.getKey();
@@ -90,7 +90,7 @@ public class RedisServiceController {
         return "key-list存储成成功";
     }
 
-    @RequestMapping(value = "insertGetList.do", method = RequestMethod.GET)
+    @RequestMapping(value = "insertGetList.do", method = RequestMethod.POST)
     public String insertGetList(@RequestBody RedisModel redisModel){
         log.info("key-list获取");
         String key = redisModel.getKey();

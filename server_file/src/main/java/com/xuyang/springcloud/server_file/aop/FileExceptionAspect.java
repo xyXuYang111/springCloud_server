@@ -80,10 +80,11 @@ public class FileExceptionAspect {
 
     /**
      * 操作成功日志记录
+     *
      * @param joinPoint
      */
     @After("pointCut()")
-    public void close(JoinPoint joinPoint){
+    public void close(JoinPoint joinPoint) {
         log.info("后置通知");
 
         String methodName = joinPoint.getSignature().getName();
@@ -93,7 +94,7 @@ public class FileExceptionAspect {
         //获取传入目标方法的参数
         Object[] args = joinPoint.getArgs();
         for (int i = 0; i < args.length; i++) {
-            log.info("第" + (i+1) + "个参数为:" + args[i]);
+            log.info("第" + (i + 1) + "个参数为:" + args[i]);
             stringBuilder.append(args[i]).append(",");
         }
 
