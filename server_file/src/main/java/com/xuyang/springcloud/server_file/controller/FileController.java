@@ -104,23 +104,11 @@ public class FileController {
     }
 
     @RequestMapping(value = "fileListController.do", method = RequestMethod.POST)
-    public List<Files> fileListController(@RequestBody Files files){
+    public List<Files> fileListController(@RequestBody Files files) {
         log.info("获取某个用户下的所有文件信息");
         try {
             List<Files> filesList = filesService.getFilesList(files);
             return filesList;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-    @RequestMapping(value = "fileInfoController.do", method = RequestMethod.POST)
-    public Files fileInfoController(@RequestBody Files files){
-        log.info("获取指定文件信息");
-        try {
-            Files filesInfo = filesService.getFilesInfo(files);
-            return filesInfo;
         } catch (Exception e) {
             e.printStackTrace();
             return null;

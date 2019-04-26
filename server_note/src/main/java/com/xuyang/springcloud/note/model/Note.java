@@ -1,5 +1,6 @@
 package com.xuyang.springcloud.note.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
@@ -18,18 +19,25 @@ public class Note implements Serializable {
 
     private static final long serialVersionUID = 4753354632865452755L;
 
+    @JsonProperty(value = "noteId")
     private String noteId;
 
+    @JsonProperty(value = "userId")
     private String userId;
 
+    @JsonProperty(value = "noteName")
     private String noteName;
 
+    @JsonProperty(value = "noteContent")
     private String noteContent;
 
+    @JsonProperty(value = "noteType")
     private String noteType;
 
+    @JsonProperty(value = "noteUrl")
     private String noteUrl;
 
+    @JsonProperty(value = "createNoteUrl")
     private String createNoteUrl;
 
     public String getNoteId() {

@@ -60,7 +60,7 @@ public class QuartzConfiguration {
         CronTriggerFactoryBean tigger = new CronTriggerFactoryBean();
         tigger.setJobDetail(reptilianJob);
         //cron表达式，每1分钟执行一次
-        tigger.setCronExpression("*/5 * * * * ?");
+        tigger.setCronExpression("0 0 0 * * ?");
         tigger.setName("reptilianTrigger");
         return tigger;
     }

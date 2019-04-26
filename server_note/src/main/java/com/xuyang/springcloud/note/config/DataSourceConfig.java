@@ -24,7 +24,7 @@ import javax.sql.DataSource;
 @Slf4j
 @Data
 @Configuration
-@MapperScan(value = "com.xuyang.springcloud.server_file.dao",
+@MapperScan(value = "com.xuyang.springcloud.note.dao",
         annotationClass = MyBatisDao.class,
         sqlSessionFactoryRef = "userConfigSqlSessionFactory")
 public class DataSourceConfig {
