@@ -6,26 +6,26 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="registry" />
-        <module name="server_api" />
-        <module name="server_ecache" />
-        <module name="server_elasticsearch" />
-        <module name="server_email" />
-        <module name="server_file" />
-        <module name="server_kafka" />
-        <module name="server_note" />
-        <module name="server_quartz" />
-        <module name="server_rabbitmq" />
-        <module name="server_redis" />
-        <module name="server_user" />
         <module name="springCloud_server" />
-        <module name="web03" />
+        <module name="registry" />
+        <module name="server_mongodb" />
         <module name="zuul" />
+        <module name="web03" />
+        <module name="server_ecache" />
+        <module name="server_kafka" />
+        <module name="server_rabbitmq" />
+        <module name="server_file" />
+        <module name="server_user" />
+        <module name="server_quartz" />
+        <module name="server_note" />
+        <module name="server_redis" />
+        <module name="server_api" />
+        <module name="server_email" />
+        <module name="server_elasticsearch" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="server_cxf" target="1.8" />
-      <module name="web03" target="1.5" />
       <module name="zipkin_server" target="1.8" />
     </bytecodeTargetLevel>
   </component>
@@ -38,6 +38,7 @@
       <module name="server_email" options="-parameters" />
       <module name="server_file" options="-parameters" />
       <module name="server_kafka" options="-parameters" />
+      <module name="server_mongodb" options="-parameters" />
       <module name="server_note" options="-parameters" />
       <module name="server_quartz" options="-parameters" />
       <module name="server_rabbitmq" options="-parameters" />

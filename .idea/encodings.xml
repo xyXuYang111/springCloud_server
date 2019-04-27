@@ -3,7 +3,6 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/registry" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/server_api" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/server_cxf" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/server_ecache" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/server_elasticsearch" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/server_email" charset="UTF-8" />
@@ -11,6 +10,7 @@
     <file url="file://$PROJECT_DIR$/server_file/src/main/resources/mybatis/file/fileMapper.xml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/server_file/src/main/resources/mybatis/mybatis-config.xml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/server_kafka" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/server_mongodb" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/server_note" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/server_quartz" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/server_rabbitmq" charset="UTF-8" />

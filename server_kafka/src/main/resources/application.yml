@@ -12,3 +12,10 @@ server:
 spring:
   application:
     name: kafka
+  zipkin:
+    sender:
+      type: kafka  # 切换到rabbitmq
+  sleuth:
+    sampler:
+      #应采样的请求的概率。 例如。 应该对1.0  -  100％的请求进行抽样。 精度仅为整数（即不支持0.1％的迹线）。
+      probability: 1.0

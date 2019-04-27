@@ -1,0 +1,55 @@
+什么是RabbitMQ？
+
+RabbitMQ是一个消息中间件，是一个实现了AMQP（高级消息队列协议）的开源消息代理软件，同类的产品还有kafka，rocketMQ，但是目前springcloud只集成了RabbitMQ和kafka，他的作用就是实现系统之间消息传递的解耦，对一些实时性要求不是很高的服务或者并发很高的系统来说是一个不错的选择，同时因为RabbitMQ是以AMQP协议实现的，所以支持多操作系统，多编程语言，先来理解一下RabbitMQ的几个概念：
+
+broker：消息队列服务器实体，它是一个中间件应用，负责接收消息生产者的消息，然后将消息发送给消息消费者或者别的broker；
+
+Exchange：消息交换机，这是消息第一个到达的地方，消息通过他指定的路由规则，发送给不同的消息队列；
+
+Queue：消息队列，消息通过发送和Exchange路由后最终到达的地方，理论上消息到达Queue后就是等待消费的状态，一个消息最终会发送给一个或者多个Queue；
+
+Binding：绑定，将Exchange和Queue按照路由规则绑定起来，也就是建立Exchange和Queue的虚拟连接；
+
+Routing key：路由关键字，Exchange根据这个路由关键字进行投递；
+
+Virtual Host：虚拟主机，一个Broker可能包含多个虚拟主机；
+
+Connection：连接，代表生产者、消费者、Broker之间的物理连接；
+
+Channel：消息通道，用于连接生产者和消费者的逻辑结构。每个连接里面可能有多个Channel，每个Channel代表一个会话；
+
+Producer：消息生产者；
+
+Consumer：消息消费者；
+
+消息投递到队列的整个过程：
+
+1、客户端连接到消息队列服务器Broker，建立一个Channel连接；
+
+2、客户端声明一个Exchange，设置其属性；
+
+3、客户端声明一个Queue，设置其属性；
+
+4、客户端声明一个Routing key，binding Exchange和Queue；
+
+5、客户端发送一条消息，Exchange接收到消息后，根据key解析路由到相应的队列；
+
+Exchange也有集中类型：
+
+1、Direct交换机：完全根据key投递，比如设置了Routing key等于abc，那么客户端必须发送key=abc才会被投递到队列；
+
+2、topic交换机：根据key进行模糊匹配后投递，可以使用符合#匹配一个或者多个词，*只能匹配一个次；
+
+3、Fanout：无需配置关键字Key，它采用广播室，一个消息进来，投递给所有与该Exchange绑定的消息队列；
+
+RabbitMQ也支持消息的持久化，就会将数据写在磁盘上，默认为了安全考虑，建议消息持久化；
+
+1、Exchange持久化，客户端配置时durable>=1;
+
+2、Queue持久化，客户端配置时durable>=1;
+
+3、消息持久化，在投递时设定delivery_mode>=2;
+
+rabbitMq的使用过程和kafka的使用过程存在相似点  -----入门级别的操作
+   kafka是通过定义：topic，在根据spring-data整合好的方法进行消息发送就好了
+   rabbitmq也是查不到：定义quene：管道，然后进行消息列队的实现。
