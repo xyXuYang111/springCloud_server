@@ -35,6 +35,11 @@ public class QuartzSchedule {
             historyFile.mkdir();
         }
 
+        File noteFile = new File("D:\\file\\note\\" + nowDate);
+        if(!noteFile.exists()){
+            noteFile.mkdir();
+        }
+
         File zipFile = new File("D:\\file\\write\\" + nowDate + ".zip");
         if(!zipFile.exists()){
             try {
