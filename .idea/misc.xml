@@ -26,7 +26,6 @@
         <option value="$PROJECT_DIR$/zuul/pom.xml" />
         <option value="$PROJECT_DIR$/server_file/pom.xml" />
         <option value="$PROJECT_DIR$/server_email/pom.xml" />
-        <option value="$PROJECT_DIR$/server_user/pom.xml" />
         <option value="$PROJECT_DIR$/server_api/pom.xml" />
         <option value="$PROJECT_DIR$/redis/pom.xml" />
         <option value="$PROJECT_DIR$/server_redis/pom.xml" />
@@ -36,7 +35,6 @@
         <option value="$PROJECT_DIR$/server_elasticsearch/pom.xml" />
         <option value="$PROJECT_DIR$/server_rabbitmq/pom.xml" />
         <option value="$PROJECT_DIR$/note/pom.xml" />
-        <option value="$PROJECT_DIR$/server_note/pom.xml" />
         <option value="$PROJECT_DIR$/server_mongodb/pom.xml" />
         <option value="$PROJECT_DIR$/server_freemarker/pom.xml" />
       </list>
