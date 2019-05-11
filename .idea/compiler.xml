@@ -19,6 +19,7 @@
         <module name="server_quartz" />
         <module name="server_note" />
         <module name="server_redis" />
+        <module name="server_freemarker" />
         <module name="server_api" />
         <module name="server_user" />
         <module name="server_elasticsearch" />
@@ -37,6 +38,7 @@
       <module name="server_elasticsearch" options="-parameters" />
       <module name="server_email" options="-parameters" />
       <module name="server_file" options="-parameters" />
+      <module name="server_freemarker" options="-parameters" />
       <module name="server_kafka" options="-parameters" />
       <module name="server_mongodb" options="-parameters" />
       <module name="server_note" options="-parameters" />

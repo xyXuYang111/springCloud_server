@@ -38,6 +38,7 @@
         <option value="$PROJECT_DIR$/note/pom.xml" />
         <option value="$PROJECT_DIR$/server_note/pom.xml" />
         <option value="$PROJECT_DIR$/server_mongodb/pom.xml" />
+        <option value="$PROJECT_DIR$/server_freemarker/pom.xml" />
       </list>
     </option>
   </component>
