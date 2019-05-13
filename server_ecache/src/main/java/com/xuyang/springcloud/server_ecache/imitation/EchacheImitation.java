@@ -21,6 +21,12 @@ public class EchacheImitation {
     //缓存存放地方
     private static Map<String, Object> map = new HashMap<>();
 
+    static {
+        //单例模式：静态莫板块
+        //初始化数据
+        initEcache();
+    }
+
     /**
      * 定义缓存
      */
@@ -41,9 +47,6 @@ public class EchacheImitation {
     }
 
     public static void main(String[] args){
-
-        //初始化缓存
-        initEcache();
         //读取缓存
         System.out.println(ecacheMap("111"));
     }
